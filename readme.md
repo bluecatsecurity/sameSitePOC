@@ -18,8 +18,6 @@ Install nodemon
 ## Usage
 
 ```python
-import foobar
-
 node server.js
 nodemon server.js
 ```
