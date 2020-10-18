@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<head>
+  <title>LOGIN</title>
+  <link rel="stylesheet" type="text/css" href="./styles.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+    
+$(()=>{
+   $("#but").click(function(){
+      //alert("Clickeaste");
+      const user=$('#username').val();
+      const password=$('#password').val();
+      
+      fetch('/login',{
+          headers: {'Content-Type':'application/json'},
+          method:'POST',
+          body: JSON.stringify({username:user,password:password})
+      })      
+      .then(response=>{
+          console.log(response.text());
+      });
+      
+    });
+
+  $('.message a').click(function(){
+      console.log("clickeaste");
+      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+})
+   
+
+</script>
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" id="username" placeholder="username"/>
+      <input type="password" id="password" placeholder="password"/>
+      <button id='but'>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+
+<body>
+</HTML>
